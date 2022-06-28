@@ -1,3 +1,4 @@
+import '@/assets/css/main.css';
 import Buefy from 'buefy';
 import 'buefy/dist/buefy.css';
 import dayjs from 'dayjs';

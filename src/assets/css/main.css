@@ -1,0 +1,30 @@
+.page-height {
+  min-height: 600px !important;
+}
+.text-limit {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.primary-color {
+  color: #FF0206 !important;
+}
+.primary-background-color {
+  background-color: #FF0206 !important;
+  color: white !important;
+}
+.secondary-background-color {
+  color: #FF0206 !important;
+  background-color: white !important;
+}
+.base-theme {
+  background-color: #0d0d0d;
+}
+a {
+  color: #FF0206 !important;
+}
+.secondary-color {
+  color: #b5b5b5 !important;
+}
