@@ -1,15 +1,17 @@
 <template>
-  <b-navbar>
+  <b-navbar class="nav-style">
     <template #brand>
-      <b-navbar-item tag="router-link" :to="{ path: '/' }"> </b-navbar-item>
+      <b-navbar-item
+        tag="router-link"
+        :to="{ name: 'Home' }"
+        class="primary-color"
+      >
+        Poduniverse
+      </b-navbar-item>
     </template>
     <template #start>
       <b-navbar-item href="#"></b-navbar-item>
       <b-navbar-item href="#"></b-navbar-item>
-      <b-navbar-dropdown label="Info">
-        <b-navbar-item href="#"></b-navbar-item>
-        <b-navbar-item href="#"></b-navbar-item>
-      </b-navbar-dropdown>
     </template>
 
     <template #end>
@@ -20,3 +22,8 @@
 <script>
 export default {};
 </script>
+<style scoped>
+.nav-style {
+  background-color: #000000;
+}
+</style>
