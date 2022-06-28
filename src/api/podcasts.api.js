@@ -1,11 +1,9 @@
 import httpClient from './httpClient';
 
-const END_POINT = '/search/byterm';
-
 const getPodcastBySearchTerm = (searchTerm) =>
   // eslint-disable-next-line implicit-arrow-linebreak
   httpClient
-    .get(END_POINT, {
+    .get('/search/byterm', {
       params: {
         q: searchTerm,
       },
@@ -15,4 +13,30 @@ const getPodcastBySearchTerm = (searchTerm) =>
       return error.response;
     });
 
-export default getPodcastBySearchTerm;
+const getPodcastByFeedId = (feedId) =>
+  // eslint-disable-next-line implicit-arrow-linebreak
+  httpClient
+    .get('/podcasts/byfeedid', {
+      params: {
+        id: feedId,
+      },
+    })
+    .catch((error) => {
+      console.log(error.response);
+      return error.response;
+    });
+
+const getEpisodesByFeedId = (feedId) =>
+  // eslint-disable-next-line implicit-arrow-linebreak
+  httpClient
+    .get('/episodes/byfeedid', {
+      params: {
+        id: feedId,
+      },
+    })
+    .catch((error) => {
+      console.log(error.response);
+      return error.response;
+    });
+
+export { getPodcastBySearchTerm, getPodcastByFeedId, getEpisodesByFeedId };
