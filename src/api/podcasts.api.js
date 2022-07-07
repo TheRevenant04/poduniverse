@@ -1,8 +1,10 @@
-import httpClient from './httpClient';
+import HttpClient from './httpClient';
 
-const getPodcastBySearchTerm = (searchTerm) =>
+const getPodcastBySearchTerm = (searchTerm) => {
+  const apiClient = new HttpClient();
+  const httpClient = apiClient.getHttpClient();
   // eslint-disable-next-line implicit-arrow-linebreak
-  httpClient
+  return httpClient
     .get('/search/byterm', {
       params: {
         q: searchTerm,
@@ -12,10 +14,13 @@ const getPodcastBySearchTerm = (searchTerm) =>
       console.log(error.response);
       return error.response;
     });
+};
 
-const getPodcastByFeedId = (feedId) =>
+const getPodcastByFeedId = (feedId) => {
+  const apiClient = new HttpClient();
+  const httpClient = apiClient.getHttpClient();
   // eslint-disable-next-line implicit-arrow-linebreak
-  httpClient
+  return httpClient
     .get('/podcasts/byfeedid', {
       params: {
         id: feedId,
@@ -25,10 +30,13 @@ const getPodcastByFeedId = (feedId) =>
       console.log(error.response);
       return error.response;
     });
+};
 
-const getEpisodesByFeedId = (feedId) =>
+const getEpisodesByFeedId = (feedId) => {
+  const apiClient = new HttpClient();
+  const httpClient = apiClient.getHttpClient();
   // eslint-disable-next-line implicit-arrow-linebreak
-  httpClient
+  return httpClient
     .get('/episodes/byfeedid', {
       params: {
         id: feedId,
@@ -38,5 +46,6 @@ const getEpisodesByFeedId = (feedId) =>
       console.log(error.response);
       return error.response;
     });
+};
 
 export { getPodcastBySearchTerm, getPodcastByFeedId, getEpisodesByFeedId };
