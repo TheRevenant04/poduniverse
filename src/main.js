@@ -1,6 +1,9 @@
 import '@/assets/css/main.css';
+import '@/assets/scss/base.scss';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faArrowsRotate, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Buefy from 'buefy';
-import 'buefy/dist/buefy.css';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -9,8 +12,15 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+// internal icons
 
-Vue.use(Buefy);
+library.add(faArrowsRotate, faMagnifyingGlass);
+Vue.component('vue-fontawesome', FontAwesomeIcon);
+
+Vue.use(Buefy, {
+  defaultIconComponent: 'vue-fontawesome',
+  defaultIconPack: 'fas',
+});
 
 dayjs.extend(duration);
 const config = {
