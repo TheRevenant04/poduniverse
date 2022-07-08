@@ -1,5 +1,5 @@
 <template>
-  <div class="container page-height">
+  <div class="container min-page-height">
     <div v-if="showPageLoader" class="column is-full">
       <loader :isFullPage="true" :isLoading="showPageLoader" />
     </div>
@@ -29,13 +29,13 @@
               :key="key"
               type="is-secondary"
               rounded
-              class="primary-background-color"
+              class="has-background-primary has-text-white"
               >{{ category }}</b-tag
             >
           </b-taglist>
           <b-button
             type="is-primary"
-            class="secondary-background-color"
+            class="has-background-white has-text-primary"
             rounded
             @click="openPodcastSource"
             >Listen Now</b-button

@@ -1,5 +1,5 @@
 <template>
-  <div class="base-theme">
+  <div>
     <site-header class="mb-4" />
     <div class="container">
       <router-view></router-view>

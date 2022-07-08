@@ -6,11 +6,13 @@
         placeholder="Find an amazing podcast..."
         rounded
         type="search"
-        icon="account"
+        icon-pack="fas"
+        icon-right="magnifying-glass"
         size="is-medium"
-        icon-clickable
-        @icon-click="search"
+        icon-right-clickable
+        @icon-right-click="search"
         v-on:keyup.native.enter="search"
+        custom-class="has-background-grey-dark has-text-white"
       >
       </b-input>
     </b-field>

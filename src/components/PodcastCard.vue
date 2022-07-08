@@ -1,5 +1,5 @@
 <template>
-  <div class="card" style="border-radius: 1.75rem; background-color: #0d0d0d">
+  <div class="card podcast-card">
     <div class="card-image">
       <figure class="image is-square">
         <img :src="image" :alt="title" style="border-radius: 1.25rem" />
@@ -33,11 +33,8 @@ export default {
 };
 </script>
 <style scoped>
-.text-limit > p {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+.podcast-card {
+  border-radius: 1.75rem;
+  background-color: #0d0d0d;
 }
 </style>

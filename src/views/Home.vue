@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="columns page-height is-centered is-vcentered">
+    <div class="columns min-page-height is-centered is-vcentered">
       <div v-if="showPageLoader" class="column is-full">
         <loader :isFullPage="true" :isLoading="showPageLoader" />
       </div>
@@ -13,7 +13,7 @@
             <search-bar />
           </div>
         </div>
-        <h2 class="title is-3 primary-color">Search Results</h2>
+        <h2 class="title is-3 has-text-primary">Search Results</h2>
         <section v-if="podcastSearchResultList.length == 0">
           <h2 class="has-text-white">No results found</h2>
         </section>

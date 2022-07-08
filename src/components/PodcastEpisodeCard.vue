@@ -1,5 +1,5 @@
 <template>
-  <div class="card" style="background-color: #363636; border-radius: 1.25rem">
+  <div class="card podcast-episode-card">
     <div class="card-content">
       <div class="media">
         <div class="media-left">
@@ -18,7 +18,7 @@
             }}</a>
           </p>
           <content-collapse :content="formattedEpisodeDescription" />
-          <p class="subtitle is-6 secondary-color">
+          <p class="subtitle is-6">
             {{ episode.datePublished }} - {{ formattedEpisodeDuration }}
           </p>
         </div>
@@ -70,3 +70,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+.podcast-episode-card {
+  background-color: #363636;
+  border-radius: 1.25rem;
+}
+</style>
