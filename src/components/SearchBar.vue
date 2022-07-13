@@ -1,14 +1,18 @@
 <template>
   <section>
-    <b-field label="Find a podcast" class="p-2">
+    <b-field class="p-2">
       <b-input
         v-model="searchTerm"
-        placeholder="Search..."
+        placeholder="Find an amazing podcast..."
         rounded
         type="search"
-        icon="magnify"
+        icon-pack="fas"
+        icon="search"
+        size="is-medium"
         icon-clickable
         @icon-click="search"
+        v-on:keyup.native.enter="search"
+        custom-class="has-background-grey-dark has-text-white is-size-6-mobile"
       >
       </b-input>
     </b-field>
@@ -25,21 +29,34 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['podcastSearchResultList']),
+    ...mapGetters({
+      computedSearchTerm: 'searchString',
+      podcastSearchResultList: 'podcastSearchResultList',
+    }),
+  },
+  watch: {
+    computedSearchTerm: {
+      immediate: true,
+      handler(value) {
+        this.searchTerm = value;
+      },
+    },
   },
   methods: {
+    setSearchString() {
+      this.$store.commit('setSearchString', this.searchTerm);
+    },
     async search() {
       try {
-        console.log(this.searchTerm);
+        this.setSearchString();
         if (this.searchTerm !== '') {
-          await this.fetchPodcasts(this.searchTerm);
-          console.log(this.podcastSearchResultList);
+          await this.fetchPodcastsBySearchTerm(this.searchTerm);
         }
       } catch (error) {
         console.log(error);
       }
     },
-    ...mapActions(['fetchPodcasts']),
+    ...mapActions(['fetchPodcastsBySearchTerm']),
   },
 };
 </script>

@@ -1,0 +1,39 @@
+.min-page-height {
+  min-height: calc(100vh - 132px) !important;
+}
+.text-limit {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+@media screen and (max-width: 1024px) {
+  .container.is-custom-fluid {
+    max-width: none !important;
+    width: 100%;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+.control.has-icons-left .input,
+.control.has-icons-left .select select {
+  padding-left: 3.5em !important;
+}
+
+.control.has-icons-left .input.is-medium~.icon,
+.control.has-icons-left .select.is-medium~.icon {
+  padding-left: 20px;
+  padding-top: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .control.has-icons-left .input.is-medium~.icon,
+    .control.has-icons-left .select.is-medium~.icon {
+      font-size: 1rem !important;
+      padding-left: 20px;
+      padding-top: 2px;
+    }
+}

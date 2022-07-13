@@ -1,18 +1,42 @@
-import httpClient from './httpClient';
+import HttpClient from './httpClient';
 
-const END_POINT = '/search/byterm';
-
-const getPodcastBySearchTerm = (searchTerm) =>
+const getPodcastBySearchTerm = (searchTerm) => {
+  const apiClient = new HttpClient();
+  const httpClient = apiClient.getHttpClient();
   // eslint-disable-next-line implicit-arrow-linebreak
-  httpClient
-    .get(END_POINT, {
+  return httpClient
+    .get('/search/byterm', {
       params: {
         q: searchTerm,
       },
     })
-    .catch((error) => {
-      console.log(error.response);
-      return error.response;
-    });
+    .catch((error) => error.response);
+};
 
-export default getPodcastBySearchTerm;
+const getPodcastByFeedId = (feedId) => {
+  const apiClient = new HttpClient();
+  const httpClient = apiClient.getHttpClient();
+  // eslint-disable-next-line implicit-arrow-linebreak
+  return httpClient
+    .get('/podcasts/byfeedid', {
+      params: {
+        id: feedId,
+      },
+    })
+    .catch((error) => error.response);
+};
+
+const getEpisodesByFeedId = (feedId) => {
+  const apiClient = new HttpClient();
+  const httpClient = apiClient.getHttpClient();
+  // eslint-disable-next-line implicit-arrow-linebreak
+  return httpClient
+    .get('/episodes/byfeedid', {
+      params: {
+        id: feedId,
+      },
+    })
+    .catch((error) => error.response);
+};
+
+export { getPodcastBySearchTerm, getPodcastByFeedId, getEpisodesByFeedId };

@@ -1,14 +1,14 @@
 <template>
-  <div class="card" style="border-radius: 0.5rem">
+  <div class="card podcast-card">
     <div class="card-image">
-      <figure class="image is-3by2">
-        <img :src="image" :alt="title" style="border-radius: 0.5rem" />
+      <figure class="image is-square">
+        <img :src="image" :alt="title" style="border-radius: 1.25rem" />
       </figure>
     </div>
     <div class="card-content" style="padding: 0 !important">
       <div class="media">
-        <div class="media-content">
-          <p>{{ title }}</p>
+        <div class="media-content text-limit">
+          <p class="has-text-white is-size-6-mobile">{{ title }}</p>
         </div>
       </div>
     </div>
@@ -32,3 +32,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+.podcast-card {
+  border-radius: 1.75rem;
+  background-color: #0d0d0d;
+}
+</style>

@@ -1,22 +1,25 @@
 <template>
-  <b-navbar>
+  <b-navbar class="nav-style" fixed-top :mobile-burger="false">
     <template #brand>
-      <b-navbar-item tag="router-link" :to="{ path: '/' }"> </b-navbar-item>
-    </template>
-    <template #start>
-      <b-navbar-item href="#"></b-navbar-item>
-      <b-navbar-item href="#"></b-navbar-item>
-      <b-navbar-dropdown label="Info">
-        <b-navbar-item href="#"></b-navbar-item>
-        <b-navbar-item href="#"></b-navbar-item>
-      </b-navbar-dropdown>
-    </template>
-
-    <template #end>
-      <b-navbar-item tag="div"> </b-navbar-item>
+      <b-navbar-item :href="appUrl" class="has-text-primary">
+        Poduniverse
+      </b-navbar-item>
     </template>
   </b-navbar>
 </template>
 <script>
-export default {};
+export default {
+  computed: {
+    appUrl() {
+      return process.env.VUE_APP_APP_BASE_URL;
+    },
+  },
+};
 </script>
+<style scoped>
+.nav-style {
+  background-color: #000000;
+  font-family: "Lobster", cursive;
+  font-size: 2rem;
+}
+</style>
