@@ -12,7 +12,7 @@
         icon-right-clickable
         @icon-right-click="search"
         v-on:keyup.native.enter="search"
-        custom-class="has-background-grey-dark has-text-white"
+        custom-class="has-background-grey-dark has-text-white is-size-6-mobile"
       >
       </b-input>
     </b-field>

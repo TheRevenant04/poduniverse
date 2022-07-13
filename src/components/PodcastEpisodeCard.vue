@@ -1,24 +1,45 @@
 <template>
   <div class="card podcast-episode-card">
     <div class="card-content">
-      <div class="media">
+      <div class="media mb-2">
         <div class="media-left">
-          <figure class="image is-128x128">
+          <figure class="image is-128x128 is-hidden-mobile">
             <img
               :src="episode.imageUrl"
-              :alt="episode.title"
+              alt="image"
               style="border-radius: 1.25rem"
+            />
+          </figure>
+          <figure class="image is-48x48 is-hidden-tablet">
+            <img
+              :src="episode.imageUrl"
+              alt="image"
+              style="border-radius: 0.75rem"
             />
           </figure>
         </div>
         <div class="media-content">
-          <p class="title is-4">
+          <p class="title is-4 is-size-6-mobile">
             <a class="has-text-white" :href="episode.link" target="_blank">{{
               episode.title
             }}</a>
           </p>
-          <content-collapse :content="formattedEpisodeDescription" />
-          <p class="subtitle is-6">
+          <content-collapse
+            :content="formattedEpisodeDescription"
+            class="is-hidden-mobile"
+          />
+          <p class="subtitle is-6 is-hidden-mobile mt-2">
+            {{ episode.datePublished }} - {{ formattedEpisodeDuration }}
+          </p>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-full">
+          <content-collapse
+            :content="formattedEpisodeDescription"
+            class="is-hidden-tablet"
+          />
+          <p class="subtitle is-6 is-hidden-tablet is-size-7-mobile mt-1">
             {{ episode.datePublished }} - {{ formattedEpisodeDuration }}
           </p>
         </div>

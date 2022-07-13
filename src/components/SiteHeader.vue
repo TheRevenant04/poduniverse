@@ -1,5 +1,5 @@
 <template>
-  <b-navbar class="nav-style">
+  <b-navbar class="nav-style" fixed-top :mobile-burger="false">
     <template #brand>
       <b-navbar-item :href="appUrl" class="has-text-primary">
         Poduniverse

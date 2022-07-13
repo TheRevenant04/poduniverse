@@ -8,7 +8,7 @@
     <div class="card-content" style="padding: 0 !important">
       <div class="media">
         <div class="media-content text-limit">
-          <p style="color: #ffffff">{{ title }}</p>
+          <p class="has-text-white is-size-6-mobile">{{ title }}</p>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 .min-page-height {
-  min-height: 82vh !important;
+  min-height: calc(100vh - 132px) !important;
 }
 .text-limit {
   overflow: hidden;
@@ -7,4 +7,13 @@
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+}
+
+@media screen and (max-width: 1024px) {
+  .container.is-custom-fluid {
+    max-width: none !important;
+    width: 100%;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
 }

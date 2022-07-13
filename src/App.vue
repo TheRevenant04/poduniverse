@@ -1,10 +1,10 @@
 <template>
   <div>
-    <site-header class="mb-4" />
-    <div class="container">
+    <site-header />
+    <div class="container is-custom-fluid mt-4 mb-4">
       <router-view></router-view>
     </div>
-    <site-footer class="mt-4" />
+    <site-footer />
   </div>
 </template>
 <script>
