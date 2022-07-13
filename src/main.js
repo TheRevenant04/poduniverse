@@ -1,7 +1,7 @@
 import '@/assets/css/main.css';
 import '@/assets/scss/base.scss';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faArrowsRotate, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Buefy from 'buefy';
 import dayjs from 'dayjs';
@@ -12,9 +12,8 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-// internal icons
 
-library.add(faArrowsRotate, faMagnifyingGlass);
+library.add(faSpinner, faSearch);
 Vue.component('vue-fontawesome', FontAwesomeIcon);
 
 Vue.use(Buefy, {

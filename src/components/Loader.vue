@@ -2,7 +2,7 @@
   <b-loading :is-full-page="isFullPage" v-model="isLoading" :can-cancel="false">
     <b-icon
       pack="fas"
-      icon="arrows-rotate"
+      icon="spinner"
       size="is-large"
       type="is-primary"
       custom-class="fa-spin"

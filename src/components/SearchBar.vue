@@ -7,10 +7,10 @@
         rounded
         type="search"
         icon-pack="fas"
-        icon-right="magnifying-glass"
+        icon="search"
         size="is-medium"
-        icon-right-clickable
-        @icon-right-click="search"
+        icon-clickable
+        @icon-click="search"
         v-on:keyup.native.enter="search"
         custom-class="has-background-grey-dark has-text-white is-size-6-mobile"
       >
@@ -51,7 +51,6 @@ export default {
         this.setSearchString();
         if (this.searchTerm !== '') {
           await this.fetchPodcastsBySearchTerm(this.searchTerm);
-          console.log(this.podcastSearchResultList);
         }
       } catch (error) {
         console.log(error);
