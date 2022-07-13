@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="content has-text-centered">
       <p class="has-text-white">
-        {{ currentYear }} - Created by
+        {{ currentYear }} - poduniverse by
         <strong>
           <a :href="githubProfileUrl" target="_blank"> TheRevenant04 </a>
         </strong>
@@ -28,5 +28,6 @@ export default {
 .footer {
   padding: 1.5rem 1.5rem 1.5rem;
   background-color: #000000;
+  margin-top: 22px;
 }
 </style>
