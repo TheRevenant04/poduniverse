@@ -100,8 +100,6 @@ export default {
       if (this.searchTerm !== '') {
         await this.fetchPodcastsByFeedId(feedId);
         await this.fetchEpisodesByFeedId(feedId);
-        console.log(this.podcastDetails);
-        console.log(this.podcastEpisodes);
       }
     } catch (error) {
       console.log(error);

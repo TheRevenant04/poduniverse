@@ -10,10 +10,7 @@ const getPodcastBySearchTerm = (searchTerm) => {
         q: searchTerm,
       },
     })
-    .catch((error) => {
-      console.log(error.response);
-      return error.response;
-    });
+    .catch((error) => error.response);
 };
 
 const getPodcastByFeedId = (feedId) => {
@@ -26,10 +23,7 @@ const getPodcastByFeedId = (feedId) => {
         id: feedId,
       },
     })
-    .catch((error) => {
-      console.log(error.response);
-      return error.response;
-    });
+    .catch((error) => error.response);
 };
 
 const getEpisodesByFeedId = (feedId) => {
@@ -42,10 +36,7 @@ const getEpisodesByFeedId = (feedId) => {
         id: feedId,
       },
     })
-    .catch((error) => {
-      console.log(error.response);
-      return error.response;
-    });
+    .catch((error) => error.response);
 };
 
 export { getPodcastBySearchTerm, getPodcastByFeedId, getEpisodesByFeedId };

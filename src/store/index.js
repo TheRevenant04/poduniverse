@@ -70,7 +70,6 @@ export default new Vuex.Store({
             )
           )
         );
-        console.log(podcasts);
         state.podcastSearchResultList = podcasts;
       } catch (error) {
         console.log(error);
