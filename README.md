@@ -1,24 +1,32 @@
-# poduniverse
+# Poduniverse
+A podcast search web application created using Vue.js.
 
-## Project setup
-```
-npm install
-```
+![Poduniverse Demo](https://i.imgur.com/ZfpHbYD.gif)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Description
+* **Poduniverse** is a podcast search web application.
+* Poduniverse uses data fetched from the [PodcastIndex](https://podcastindex-org.github.io/docs-api/#overview--example-code) API.
+* A hosted version of the application can be found [here](https://poduniverse.netlify.app/).
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
+## How to Use?
+ #### Project Setup  
+1. Clone the project from the project repo
+   ```
+   git clone https://github.com/TheRevenant04/poduniverse.git
+   ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+1. Install dependencies.
+   ```
+   npm install
+   ```
+   
+1. Run the project.
+   ```
+   npm run serve
+   ```
+   
+1. Open a browser and access following URL
+   ```
+   http://localhost:8080
+   ```
