@@ -77,18 +77,22 @@ export default new Vuex.Store({
       }
     },
     SET_PODCAST_DETAILS(state, data) {
-      const podcast = data.feed;
       try {
-        state.podcastDetails = new Podcast(
-          podcast.id,
-          podcast.title,
-          podcast.author,
-          podcast.description,
-          podcast.ownerName,
-          podcast.link,
-          podcast.image,
-          podcast.categories
-        );
+        if (data === null) {
+          state.podcastDetails = null;
+        } else {
+          const podcast = data.feed;
+          state.podcastDetails = new Podcast(
+            podcast.id,
+            podcast.title,
+            podcast.author,
+            podcast.description,
+            podcast.ownerName,
+            podcast.link,
+            podcast.image,
+            podcast.categories
+          );
+        }
       } catch (error) {
         console.log(error);
         state.podcastDetails = null;
@@ -142,7 +146,7 @@ export default new Vuex.Store({
         commit('SET_SHOW_PAGE_LOADER', true);
         const response = await getPodcastByFeedId(feedId);
         commit('SET_SHOW_PAGE_LOADER', false);
-        if (response.status === HTTP_OK) {
+        if (response.status === HTTP_OK && response.data.feed.length !== 0) {
           commit('SET_PODCAST_DETAILS', response.data);
         } else {
           commit('SET_PODCAST_DETAILS', null);

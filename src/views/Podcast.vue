@@ -3,7 +3,7 @@
     <div v-if="showPageLoader" class="column is-full">
       <loader :isFullPage="true" :isLoading="showPageLoader" />
     </div>
-    <div v-else>
+    <div v-else-if="podcastDetails !== null">
       <div class="columns is-multiline is-mobile mt-4 is-centered is-vcentered">
         <div class="column is-6-mobile is-4-tablet is-3-desktop">
           <div class="card-image">
@@ -97,9 +97,17 @@ export default {
   async created() {
     try {
       const feedId = this.$route.params.id;
-      if (this.searchTerm !== '') {
+      if (feedId !== '') {
         await this.fetchPodcastsByFeedId(feedId);
         await this.fetchEpisodesByFeedId(feedId);
+        if (this.$store.getters.podcastDetails === null) {
+          this.$router.push({
+            name: 'notFound',
+            params: { pathMatch: this.$route.path.substring(1).split('/') },
+            query: this.$route.query,
+            hash: this.$route.hash,
+          });
+        }
       }
     } catch (error) {
       console.log(error);
