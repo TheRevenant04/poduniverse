@@ -47,13 +47,13 @@ export default new Vuex.Store({
     setSearchString(state, data) {
       state.searchString = data;
     },
-    SET_SHOW_SEARCH_RESULTS(state, flag) {
+    setShowSearchResults(state, flag) {
       state.showSearchResults = flag;
     },
-    SET_SHOW_PAGE_LOADER(state, flag) {
+    setShowPageLoader(state, flag) {
       state.showPageLoader = flag;
     },
-    SET_PODCAST_SEARCH_RESULT_LIST(state, data) {
+    setPodcastSearchResultList(state, data) {
       try {
         const podcasts = [];
         data.feeds.forEach((podcast) =>
@@ -76,7 +76,7 @@ export default new Vuex.Store({
         state.podcastSearchResultList = null;
       }
     },
-    SET_PODCAST_DETAILS(state, data) {
+    setPodcastDetails(state, data) {
       try {
         if (data === null) {
           state.podcastDetails = null;
@@ -98,7 +98,7 @@ export default new Vuex.Store({
         state.podcastDetails = null;
       }
     },
-    SET_EPISODE_DETAILS(state, data) {
+    setEpisodeDetails(state, data) {
       const episodes = [];
       try {
         data.items.forEach((episode) => {
@@ -124,53 +124,53 @@ export default new Vuex.Store({
   actions: {
     async fetchPodcastsBySearchTerm({ commit }, searchTerm) {
       try {
-        commit('SET_SHOW_PAGE_LOADER', true);
+        commit('setShowPageLoader', true);
         const response = await getPodcastBySearchTerm(searchTerm);
-        commit('SET_SHOW_PAGE_LOADER', false);
+        commit('setShowPageLoader', false);
         if (response.status === HTTP_OK) {
-          commit('SET_PODCAST_SEARCH_RESULT_LIST', response.data);
-          commit('SET_SHOW_SEARCH_RESULTS', true);
+          commit('setPodcastSearchResultList', response.data);
+          commit('setShowSearchResults', true);
         } else {
-          commit('SET_PODCAST_SEARCH_RESULT_LIST', null);
-          commit('SET_SHOW_SEARCH_RESULTS', false);
+          commit('setPodcastSearchResultList', null);
+          commit('setShowSearchResults', false);
         }
       } catch (error) {
         console.log(error);
-        commit('SET_PODCAST_SEARCH_RESULT_LIST', null);
-        commit('SET_SHOW_SEARCH_RESULTS', false);
-        commit('SET_SHOW_PAGE_LOADER', false);
+        commit('setPodcastSearchResultList', null);
+        commit('setShowSearchResults', false);
+        commit('setShowPageLoader', false);
       }
     },
     async fetchPodcastsByFeedId({ commit }, feedId) {
       try {
-        commit('SET_SHOW_PAGE_LOADER', true);
+        commit('setShowPageLoader', true);
         const response = await getPodcastByFeedId(feedId);
-        commit('SET_SHOW_PAGE_LOADER', false);
+        commit('setShowPageLoader', false);
         if (response.status === HTTP_OK && response.data.feed.length !== 0) {
-          commit('SET_PODCAST_DETAILS', response.data);
+          commit('setPodcastDetails', response.data);
         } else {
-          commit('SET_PODCAST_DETAILS', null);
+          commit('setPodcastDetails', null);
         }
       } catch (error) {
         console.log(error);
-        commit('SET_PODCAST_DETAILS', null);
-        commit('SET_SHOW_PAGE_LOADER', false);
+        commit('setPodcastDetails', null);
+        commit('setShowPageLoader', false);
       }
     },
     async fetchEpisodesByFeedId({ commit }, feedId) {
       try {
-        commit('SET_SHOW_PAGE_LOADER', true);
+        commit('setShowPageLoader', true);
         const response = await getEpisodesByFeedId(feedId);
-        commit('SET_SHOW_PAGE_LOADER', false);
+        commit('setShowPageLoader', false);
         if (response.status === HTTP_OK) {
-          commit('SET_EPISODE_DETAILS', response.data);
+          commit('setEpisodeDetails', response.data);
         } else {
-          commit('SET_EPISODE_DETAILS', null);
+          commit('setEpisodeDetails', null);
         }
       } catch (error) {
         console.log(error);
-        commit('SET_EPISODE_DETAILS', null);
-        commit('SET_SHOW_PAGE_LOADER', false);
+        commit('setEpisodeDetails', null);
+        commit('setShowPageLoader', false);
       }
     },
   },
