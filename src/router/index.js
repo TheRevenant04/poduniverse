@@ -18,6 +18,13 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "podcast" */ '@/views/Podcast.vue'),
   },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'notFound',
+    component: () =>
+      import(/* webpackChunkName: "not-found" */ '@/views/NotFound.vue'),
+  },
+
 ];
 
 const router = new VueRouter({
