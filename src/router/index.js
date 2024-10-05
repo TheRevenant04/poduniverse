@@ -12,6 +12,11 @@ const router = createRouter({
           path: "/",
           name: "landing",
           component: () => import("../views/HomeView.vue")
+        },
+        {
+          path: "/podcast/:id",
+          name: "podcast",
+          component: () => import("@/views/Podcast.vue")
         }
       ]
     }
