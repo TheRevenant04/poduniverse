@@ -1,8 +1,10 @@
 <template>
-  <InputGroup class="w-full md:w-1/2">
-    <InputText placeholder="Find an amazing podcast" size="large" v-model="searchTerm" />
-    <Button icon="pi pi-search" severity="primary" @click="search" />
-  </InputGroup>
+  <form class="w-full md:w-1/2" @submit.prevent="search">
+    <InputGroup>
+      <InputText placeholder="Find an amazing podcast" size="large" v-model="searchTerm" />
+      <Button icon="pi pi-search" severity="primary" />
+    </InputGroup>
+  </form>
 </template>
 
 <script setup>
