@@ -2,9 +2,10 @@ import { computed, ref } from "vue";
 import { defineStore } from "pinia";
 import { getPodcastBySearchTerm } from "@/api/podcasts.api";
 import httpStatusCode from "@/enums/httpStatusCode";
+import Podcast from "@/dtos/Podcast";
 
 export const useSearchStore = defineStore("search", () => {
-  const searchString = ref("");
+  const searchTerm = ref("");
   const podcastSearchResultList = ref([]);
   const showPageLoader = ref(false);
   const podcastDetails = ref({});
@@ -18,10 +19,8 @@ export const useSearchStore = defineStore("search", () => {
     try {
       showPageLoader.value = true;
       const response = await getPodcastBySearchTerm(searchTerm);
-      console.log(response);
       if (response.status === httpStatusCode.OK) {
-        podcastSearchResultList.value = response.data.feeds;
-        showSearchResults.value = true;
+        setPodcastSearchResultList(response.data);
       } else {
         podcastSearchResultList.value = null;
       }
@@ -32,8 +31,32 @@ export const useSearchStore = defineStore("search", () => {
     }
   };
 
+  const setPodcastSearchResultList = (data) => {
+    try {
+      const podcasts = [];
+      data.feeds.forEach((podcast) =>
+        podcasts.push(
+          new Podcast(
+            podcast.id,
+            podcast.title,
+            podcast.author,
+            podcast.description,
+            podcast.ownerName,
+            podcast.link,
+            podcast.image,
+            podcast.categories
+          )
+        )
+      );
+      podcastSearchResultList.value = podcasts;
+    } catch (error) {
+      console.log(error);
+      podcastSearchResultList.value = null;
+    }
+  };
+
   return {
-    searchString,
+    searchTerm,
     podcastSearchResultList,
     showSearchResults,
     showPageLoader,
