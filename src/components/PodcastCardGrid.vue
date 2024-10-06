@@ -9,11 +9,11 @@
 </template>
 
 <script setup>
-import { useSearchStore } from "@/stores/search";
+import { usePodcastStore } from "@/stores/podcasts";
 import PodcastCard from "./PodcastCard.vue";
 import { computed } from "vue";
 
-const searchStore = useSearchStore();
+const searchStore = usePodcastStore();
 
 const podcastSearchResultList = computed(() => {
   return searchStore.podcastSearchResultList;

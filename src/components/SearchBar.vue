@@ -8,10 +8,10 @@
 </template>
 
 <script setup>
-import { useSearchStore } from "@/stores/search";
+import { usePodcastStore } from "@/stores/podcasts";
 import { computed } from "vue";
 
-const searchStore = useSearchStore();
+const searchStore = usePodcastStore();
 const searchTerm = computed({
   get: () => searchStore.searchTerm,
   set: (value) => (searchStore.searchTerm = value)

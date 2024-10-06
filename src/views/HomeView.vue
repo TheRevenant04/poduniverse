@@ -11,8 +11,8 @@
   </div>
 </template>
 <script setup>
-import { useSearchStore } from "@/stores/search";
+import { usePodcastStore } from "@/stores/podcasts";
 import SearchBar from "../components/SearchBar.vue";
 import PodcastCardGrid from "@/components/PodcastCardGrid.vue";
-const searchStore = useSearchStore();
+const searchStore = usePodcastStore();
 </script>
