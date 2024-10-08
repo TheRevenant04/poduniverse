@@ -1,15 +1,18 @@
 <template>
-  <p :class="isExpanded ? '' : `line-clamp-1`" class="text-sm">{{ content }}</p>
-  <Button text as="a" class="p-0 text-sm" @click="toggle">{{ buttonLabel }}</Button>
+  <p :class="isExpanded ? '' : `line-clamp-1`" class="text-base">{{ content }}</p>
+  <Button v-if="showButton" text as="a" class="p-0 text-base" @click="toggle">{{
+    buttonLabel
+  }}</Button>
 </template>
 <script setup>
 import Button from "primevue/button";
 import { computed, ref } from "vue";
 
-defineProps({
+const props = defineProps({
   content: {
     type: String,
-    required: true
+    required: true,
+    default: ""
   },
   limit: {
     type: Number,
@@ -22,6 +25,10 @@ const isExpanded = ref(false);
 
 const buttonLabel = computed(() => {
   return isExpanded.value ? "Read Less" : "Read More";
+});
+
+const showButton = computed(() => {
+  return props.content.length > 0;
 });
 
 const toggle = () => {
