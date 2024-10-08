@@ -27,7 +27,7 @@ import dayjs from "dayjs";
 import ContentCollapse from "./ContentCollapse.vue";
 import { computed } from "vue";
 
-const { episode } = defineProps({
+const props = defineProps({
   episode: {
     type: Object,
     required: true
@@ -36,15 +36,15 @@ const { episode } = defineProps({
 
 const formattedEpisodeDescription = computed(() => {
   try {
-    return episode.description.replace(/(<([^>]+)>)/gi, "");
+    return props.episode.description.replace(/(<([^>]+)>)/gi, "");
   } catch (exception) {
-    return episode.description;
+    return props.episode.description;
   }
 });
 
 const formattedEpisodeDuration = computed(() => {
   try {
-    const time = dayjs.duration({ seconds: episode.duration });
+    const time = dayjs.duration({ seconds: props.episode.duration });
     const hours = time.asHours();
     if (hours >= 1) {
       const parsedHours = Math.trunc(hours);
