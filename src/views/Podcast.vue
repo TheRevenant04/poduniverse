@@ -5,10 +5,10 @@
         <img :src="podcastDetails.imageUrl" :alt="podcastDetails.title" class="rounded-xl" />
       </div>
       <div class="basis-3/4 space-y-2 md:space-y-4">
-        <p class="text-base md:text-2xl text-3xl font-bold">
+        <p class="text-xl md:text-2xl text-3xl font-bold">
           {{ podcastDetails.title }}
         </p>
-        <p class="text-sm md:text-xl font-bold">
+        <p class="text-base md:text-xl font-bold">
           {{ podcastDetails.author }} | {{ podcastDetails.owner }}
         </p>
       </div>
@@ -19,7 +19,7 @@
           v-for="(category, key) in podcastDetails.categories"
           :key="key"
           severity="primary"
-          class="text-xs md:text-sm m-1 rounded-full"
+          class="text-sm m-1 rounded-full"
         >
           {{ category }}
         </Tag>
@@ -32,7 +32,7 @@
           :href="podcastDetails.link"
           target="_blank"
           rel="noopener"
-          class="text-xs md:text-base"
+          class="text-base md:text-base"
           >Listen Now</Button
         >
       </div>
@@ -58,12 +58,13 @@ import ContentCollapse from "../components/ContentCollapse.vue";
 import PodcastEpisodeCard from "../components/PodcastEpisodeCard.vue";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 const podcastStore = usePodcastStore();
 const { podcastDetails, podcastEpisodes } = storeToRefs(podcastStore);
 
 const route = useRoute();
+const router = useRouter();
 
 const { id: feedId } = defineProps({
   id: {
@@ -71,15 +72,16 @@ const { id: feedId } = defineProps({
     required: true
   }
 });
+
 onMounted(async () => {
   try {
     if (feedId !== "") {
       await podcastStore.fetchPodcastsByFeedId(feedId);
       await podcastStore.fetchEpisodesByFeedId(feedId);
       if (podcastDetails === null) {
-        this.$router.push({
+        router.push({
           name: "notFound",
-          params: { pathMatch: this.$route.path.substring(1).split("/") },
+          params: { pathMatch: route.path.substring(1).split("/") },
           query: route.query,
           hash: route.hash
         });
