@@ -11,12 +11,40 @@ import updateLocale from "dayjs/plugin/updateLocale";
 
 import App from "./App.vue";
 import router from "./router";
+import { definePreset } from "@primevue/themes";
 
 const app = createApp(App);
 
+const extendedThemePresent = definePreset(Aura, {
+  components: {
+    card: {
+      colorScheme: {
+        light: {
+          root: {
+            background: "{surface.200}",
+            color: "{surface.700}"
+          },
+          subtitle: {
+            color: "{surface.500}"
+          }
+        },
+        dark: {
+          root: {
+            background: "{surface.800}",
+            color: "{surface.0}"
+          },
+          subtitle: {
+            color: "{surface.400}"
+          }
+        }
+      }
+    }
+  }
+});
+
 app.use(PrimeVue, {
   theme: {
-    preset: Aura,
+    preset: extendedThemePresent,
     options: {
       prefix: "p",
       darkModeSelector: ".dark-theme",
