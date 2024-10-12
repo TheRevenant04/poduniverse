@@ -1,14 +1,13 @@
-import HttpClient from './httpClient';
+import HttpClient from "./HttpClient";
 
 const getPodcastBySearchTerm = (searchTerm) => {
   const apiClient = new HttpClient();
   const httpClient = apiClient.getHttpClient();
-  // eslint-disable-next-line implicit-arrow-linebreak
   return httpClient
-    .get('/search/byterm', {
+    .get("/search/byterm", {
       params: {
-        q: searchTerm,
-      },
+        q: searchTerm
+      }
     })
     .catch((error) => error.response);
 };
@@ -16,12 +15,11 @@ const getPodcastBySearchTerm = (searchTerm) => {
 const getPodcastByFeedId = (feedId) => {
   const apiClient = new HttpClient();
   const httpClient = apiClient.getHttpClient();
-  // eslint-disable-next-line implicit-arrow-linebreak
   return httpClient
-    .get('/podcasts/byfeedid', {
+    .get("/podcasts/byfeedid", {
       params: {
-        id: feedId,
-      },
+        id: feedId
+      }
     })
     .catch((error) => error.response);
 };
@@ -29,12 +27,11 @@ const getPodcastByFeedId = (feedId) => {
 const getEpisodesByFeedId = (feedId) => {
   const apiClient = new HttpClient();
   const httpClient = apiClient.getHttpClient();
-  // eslint-disable-next-line implicit-arrow-linebreak
   return httpClient
-    .get('/episodes/byfeedid', {
+    .get("/episodes/byfeedid", {
       params: {
-        id: feedId,
-      },
+        id: feedId
+      }
     })
     .catch((error) => error.response);
 };

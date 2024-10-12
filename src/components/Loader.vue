@@ -1,27 +1,7 @@
 <template>
-  <b-loading :is-full-page="isFullPage" v-model="isLoading" :can-cancel="false">
-    <b-icon
-      pack="fas"
-      icon="spinner"
-      size="is-large"
-      type="is-primary"
-      custom-class="fa-spin"
-    >
-    </b-icon>
-  </b-loading>
+  <div class="flex justify-center items-center min-h-screen">
+    <ProgressSpinner />
+  </div>
 </template>
 
-<script>
-export default {
-  props: {
-    isLoading: {
-      type: Boolean,
-      default: true,
-    },
-    isFullPage: {
-      type: Boolean,
-      default: false,
-    },
-  },
-};
-</script>
+<script></script>

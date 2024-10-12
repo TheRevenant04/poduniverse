@@ -1,39 +1,27 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable implicit-arrow-linebreak */
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
+import { createRouter, createWebHistory } from "vue-router";
+import AppLayout from "@/layouts/AppLayout.vue";
 
-Vue.use(VueRouter);
-
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home,
-  },
-  {
-    path: '/podcast/:id',
-    name: 'podcast',
-    component: () =>
-      import(/* webpackChunkName: "podcast" */ '@/views/Podcast.vue'),
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    name: 'notFound',
-    component: () =>
-      import(/* webpackChunkName: "not-found" */ '@/views/NotFound.vue'),
-  },
-
-];
-
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes,
-  scrollBehavior(to, from, savedPosition) {
-    return { x: 0, y: 0 };
-  },
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: "/",
+      component: AppLayout,
+      children: [
+        {
+          path: "/",
+          name: "landing",
+          component: () => import("../views/HomeView.vue")
+        },
+        {
+          path: "/podcast/:id",
+          name: "podcast",
+          component: () => import("@/views/Podcast.vue"),
+          props: true
+        }
+      ]
+    }
+  ]
 });
 
 export default router;

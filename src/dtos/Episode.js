@@ -1,5 +1,3 @@
-/* eslint-disable comma-dangle */
-
 class Episode {
   constructor(id, title, description, datePublishedPretty, duration, link, imageUrl) {
     this.id = id;

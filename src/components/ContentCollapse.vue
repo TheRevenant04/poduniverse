@@ -1,30 +1,37 @@
 <template>
-  <b-collapse :open="false" position="is-bottom" aria-id="contentIdForA11y4">
-    <template #trigger="props">
-      <p
-        v-if="!props.open"
-        class="text-limit is-size-7-mobile is-size-6-tablet"
-      >
-        {{ content }}
-      </p>
-      <a
-        aria-controls="contentIdForA11y4"
-        :aria-expanded="props.open"
-        class="is-size-7-mobile is-size-6-tablet"
-      >
-        {{ !props.open ? "Show more" : "Show less" }}
-      </a>
-    </template>
-    <p class="is-size-7-mobile is-size-6-tablet">{{ content }}</p>
-  </b-collapse>
+  <p :class="isExpanded ? '' : `line-clamp-1`" class="text-sm md:text-base">{{ content }}</p>
+  <Button v-if="showButton" text as="a" class="p-0 text-sm md:text-base" @click="toggle">{{
+    buttonLabel
+  }}</Button>
 </template>
-<script>
-export default {
-  props: {
-    content: {
-      type: String,
-      required: true,
-    },
+<script setup>
+import Button from "primevue/button";
+import { computed, ref } from "vue";
+
+const props = defineProps({
+  content: {
+    type: String,
+    required: true,
+    default: ""
   },
+  limit: {
+    type: Number,
+    required: false,
+    default: 1
+  }
+});
+
+const isExpanded = ref(false);
+
+const buttonLabel = computed(() => {
+  return isExpanded.value ? "Read Less" : "Read More";
+});
+
+const showButton = computed(() => {
+  return props.content.length > 0;
+});
+
+const toggle = () => {
+  isExpanded.value = !isExpanded.value;
 };
 </script>

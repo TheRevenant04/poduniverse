@@ -1,15 +1,5 @@
-/* eslint-disable comma-dangle */
 class Podcast {
-  constructor(
-    id,
-    title,
-    author,
-    description,
-    owner,
-    link,
-    imageUrl,
-    categories
-  ) {
+  constructor(id, title, author, description, owner, link, imageUrl, categories) {
     this.id = id;
     this.title = title;
     this.author = author;
