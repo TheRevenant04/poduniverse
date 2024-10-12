@@ -4,7 +4,11 @@ import tailwindcssPrimeui from "tailwindcss-primeui";
 export default {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        sans: ["Roboto", "sans-serif"]
+      }
+    }
   },
   plugins: [tailwindcssPrimeui]
 };
