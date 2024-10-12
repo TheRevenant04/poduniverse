@@ -3,7 +3,7 @@
     <img
       :src="image"
       :alt="title"
-      class="absolute inset-0 w-full h-full object-cover rounded-[1.75rem]"
+      class="absolute inset-0 w-full h-full object-cover rounded-3xl"
     />
   </div>
   <div class="media">
