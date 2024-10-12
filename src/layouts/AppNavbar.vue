@@ -1,8 +1,8 @@
 <template>
-  <menu-bar :model="items">
-    <template #item="{ item }">
-      <router-link :to="{ name: item.routeName }">
-        {{ item.label }}
+  <menu-bar>
+    <template #start>
+      <router-link :to="{ name: 'landing' }" class="font-[lobster] text-primary">
+        Poduniverse
       </router-link>
     </template>
     <template #end>
@@ -15,15 +15,6 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
 import { useLayout } from "@/composables/layout";
 const { isDarkTheme, toggleTheme } = useLayout();
-
-const items = ref([
-  {
-    label: "Logo",
-    icon: "pi pi-home",
-    routeName: "landing"
-  }
-]);
 </script>
