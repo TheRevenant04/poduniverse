@@ -21,3 +21,17 @@ const search = async () => {
   searchStore.fetchPodcastsBySearchTerm(searchTerm.value);
 };
 </script>
+<style scoped>
+.p-inputgroup > .p-inputtext {
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 1.5rem;
+}
+.p-inputgroup > .p-button {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  border-bottom-left-radius: 0px;
+}
+</style>
