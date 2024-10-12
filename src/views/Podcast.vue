@@ -1,19 +1,41 @@
 <template>
   <div class="flex flex-col gap-4">
-    <div class="flex flex-row md:items-center gap-4 md:gap-8">
-      <div class="basis-1/4">
-        <img :src="podcastDetails.imageUrl" :alt="podcastDetails.title" class="rounded-xl" />
+    <div class="flex flex-row items-center gap-4 md:gap-8">
+      <div class="basis-2/6 sm:basis-1/4">
+        <img :src="podcastDetails.imageUrl" :alt="podcastDetails.title" class="rounded-3xl" />
       </div>
-      <div class="basis-3/4 space-y-2 md:space-y-4">
+      <div class="basis-4/6 sm:basis-3/4 space-y-2 md:space-y-4">
         <p class="text-xl md:text-2xl text-3xl font-bold">
           {{ podcastDetails.title }}
         </p>
         <p class="text-base md:text-xl font-bold">
           {{ podcastDetails.author }} | {{ podcastDetails.owner }}
         </p>
+        <div class="hidden md:block">
+          <Tag
+            v-for="(category, key) in podcastDetails.categories"
+            :key="key"
+            severity="primary"
+            class="text-sm m-1 mb-2 md:mb-4 rounded-full"
+          >
+            {{ category }}
+          </Tag>
+          <div>
+            <Button
+              as="a"
+              severity="secondary"
+              rounded
+              :href="podcastDetails.link"
+              target="_blank"
+              rel="noopener"
+              class="text-base md:text-base"
+              >Listen Now</Button
+            >
+          </div>
+        </div>
       </div>
     </div>
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-4 md:hidden">
       <div>
         <Tag
           v-for="(category, key) in podcastDetails.categories"
@@ -27,7 +49,7 @@
       <div>
         <Button
           as="a"
-          severity="secondary"
+          severity="primary"
           rounded
           :href="podcastDetails.link"
           target="_blank"
