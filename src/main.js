@@ -18,6 +18,7 @@ const app = createApp(App);
 const extendedThemePresent = definePreset(Aura, {
   components: {
     card: {
+      borderRadius: "1.5rem",
       colorScheme: {
         light: {
           root: {
