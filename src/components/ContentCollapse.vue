@@ -1,6 +1,6 @@
 <template>
-  <p :class="isExpanded ? '' : `line-clamp-1`" class="text-base">{{ content }}</p>
-  <Button v-if="showButton" text as="a" class="p-0 text-base" @click="toggle">{{
+  <p :class="isExpanded ? '' : `line-clamp-1`" class="text-sm md:text-base">{{ content }}</p>
+  <Button v-if="showButton" text as="a" class="p-0 text-sm md:text-base" @click="toggle">{{
     buttonLabel
   }}</Button>
 </template>
