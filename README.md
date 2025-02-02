@@ -1,35 +1,47 @@
-# vue3-vite-demo
+# Poduniverse
 
-This template should help get you started developing with Vue 3 in Vite.
+A podcast search web application created using Vue.js.
 
-## Recommended IDE Setup
+![Poduniverse Demo](https://github.com/user-attachments/assets/ad104fee-d036-49cc-9ad8-0cdd776c0144)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Description
 
-## Customize configuration
+- **Poduniverse** is a podcast search web application.
+- Poduniverse uses data fetched from the [Podcastindex](https://podcastindex-org.github.io/docs-api/#overview--example-code) API.
+- A hosted version of the application can be found [here](https://poduniverse.netlify.app/).
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## How to Use?
 
-## Project Setup
+Create an account on [Podcastindex](https://api.podcastindex.org/) and obtain an API key and API secret.
 
-```sh
-npm install
-```
+#### Project Setup
 
-### Compile and Hot-Reload for Development
+1. Clone the repo
 
-```sh
-npm run dev
-```
+   ```
+   git clone https://github.com/TheRevenant04/poduniverse.git
+   ```
 
-### Compile and Minify for Production
+1. Create a .env
 
-```sh
-npm run build
-```
+   Copy contents from the .env.example to the .env and set the following variables:
 
-### Lint with [ESLint](https://eslint.org/)
+   ```
+   VITE_APP_APP_BASE_URL=http://localhost:5173
+   VITE_APP_API_BASE_URL=https://api.podcastindex.org/api/1.0
+   VUE_APP_API_AUTH_KEY=Your API key
+   VUE_APP_API_SECRET_KEY=Your API secret
+   ```
 
-```sh
-npm run lint
-```
+1. Install dependencies.
+   ```
+   npm install
+   ```
+1. Run the project.
+   ```
+   npm run dev
+   ```
+1. Open a browser and access the following URL
+   ```
+   http://127.0.0.1:5173
+   ```
