@@ -2,6 +2,8 @@
 
 A podcast search web application created using Vue.js.
 
+![Poduniverse Demo](https://github.com/user-attachments/assets/ad104fee-d036-49cc-9ad8-0cdd776c0144)
+
 ## Description
 
 - **Poduniverse** is a podcast search web application.
