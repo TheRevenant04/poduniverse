@@ -1,0 +1,10 @@
+services:
+  poduniverse-app:
+    build:
+      context: .
+    container_name: poduniverse-app
+    env_file:
+      - .env
+    restart: unless-stopped
+    ports:
+      - "8080:80"
