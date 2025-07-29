@@ -3,6 +3,8 @@ name: Build, Push and Deploy a Docker Image
 on:
   push:
     branches: [master]
+  pull_request:
+    branches: ['*']
 
 permissions:
   contents: read
@@ -33,6 +35,8 @@ jobs:
           push: true
           tags: ${{ steps.docker-metadata.outputs.tags }}
       - name: Deploy the app
+        id: deploy
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: digitalocean/app_action/deploy@v2
         env:
           SAMPLE_DIGEST: ${{ steps.push.outputs.digest }}
